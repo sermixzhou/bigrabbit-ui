@@ -1,15 +1,16 @@
 # Chatty Bunny / 大嘴小兔 UI
 
-An open-source React component library for learning products, built with TypeScript and Tailwind CSS 4.
+An AI-ready React UI system for modern consumer apps, built with TypeScript and Tailwind CSS 4. Its general-purpose foundations work across product categories, while the learning component suite remains a first-class specialization.
 
 [Documentation](https://sermixzhou.github.io/chatty-bunny/) · [Component API](./docs/API.md) · [Design Tokens](./docs/DESIGN_TOKENS.md) · [Changelog](./CHANGELOG.md) · [Contributing](./CONTRIBUTING.md)
 
 ## Why Chatty Bunny?
 
+- Stable consumer-app foundations: actions, forms, navigation, clean tables, timelines, profile/action cards, overlays, feedback, localization, and accessible selection patterns.
 - Learning-focused components such as word headers, quiz options, pronunciation controls, study progress, and answer feedback.
 - Responsive behavior for mobile, tablet, and desktop layouts.
 - Controlled React APIs with TypeScript declarations.
-- Keyboard focus, native semantics, reduced-motion support, and 44px minimum targets.
+- Keyboard focus, native semantics, collision-aware portal overlays, reduced-motion support, and 44px minimum targets.
 - CSS-first design tokens powered by Tailwind CSS 4.
 - Tree-shakeable ESM and CommonJS outputs with category entry points.
 
@@ -23,6 +24,16 @@ Import the stylesheet once:
 
 ```tsx
 import "chatty-bunny/styles.css";
+```
+
+The default component language is `zh-CN` for backwards compatibility. Wrap your app to switch to English or override individual system messages; explicit component props always take precedence:
+
+```tsx
+import { ChattyBunnyProvider } from "chatty-bunny";
+
+<ChattyBunnyProvider locale="en" messages={{ loading: "Working…" }}>
+  <App />
+</ChattyBunnyProvider>
 ```
 
 The default mascot artwork is separately licensed and opt-in. Import it only for permitted demonstration use, or pass your own sprite:
@@ -62,8 +73,9 @@ Importing from a category entry point keeps the dependency graph focused and mak
 
 ```tsx
 import { Button, Chip } from "chatty-bunny/primitives";
+import { ButtonGroup, Link, Toggle, ToggleGroup } from "chatty-bunny/actions";
 import { Input, Switch } from "chatty-bunny/forms";
-import { Avatar, ChoiceCard } from "chatty-bunny/data-display";
+import { Avatar, ChoiceCard, ChoiceGroup } from "chatty-bunny/data-display";
 import { Popover, Tooltip } from "chatty-bunny/overlays";
 import { QuizOption, WordHeader } from "chatty-bunny/learning";
 ```
@@ -74,6 +86,7 @@ Available entries:
 chatty-bunny
 chatty-bunny/icon
 chatty-bunny/primitives
+chatty-bunny/actions
 chatty-bunny/forms
 chatty-bunny/cards
 chatty-bunny/navigation
@@ -121,6 +134,8 @@ Useful commands:
 npm run typecheck      # Check app and package types
 npm test               # Run component tests
 npm run test:coverage  # Run tests with coverage thresholds
+npm run test:visual    # Compare Playwright screenshots at four viewports
+npm run test:visual:update # Deliberately refresh visual baselines
 npm run build:package  # Build npm package into dist/
 npm run build:site     # Build documentation into site-dist/
 npm run check          # Run every release check

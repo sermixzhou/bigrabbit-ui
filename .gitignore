@@ -2,8 +2,11 @@ node_modules
 dist
 site-dist
 coverage
+test-results
+playwright-report
 .qa
 .DS_Store
 *.local
 *.log
 *.tsbuildinfo
+*.tgz

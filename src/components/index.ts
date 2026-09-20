@@ -1,5 +1,7 @@
 export * from "./icon";
+export * from "./chatty-bunny-provider";
 export * from "./primitives";
+export * from "./actions";
 export * from "./forms";
 export * from "./cards";
 export * from "./navigation";

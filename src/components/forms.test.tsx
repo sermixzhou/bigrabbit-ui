@@ -58,7 +58,7 @@ describe("forms", () => {
   it("selects custom select options with the keyboard", async () => {
     const onChange = vi.fn();
     render(<Select label="城市" options={[{ label: "上海", value: "sh" }, { label: "北京", value: "bj", disabled: true }, { label: "深圳", value: "sz" }]} onChange={onChange} />);
-    const trigger = screen.getByRole("button", { name: "城市" });
+    const trigger = screen.getByRole("combobox", { name: "城市" });
     await userEvent.click(trigger);
     fireEvent.keyDown(trigger, { key: "ArrowDown" });
     fireEvent.keyDown(trigger, { key: "Enter" });

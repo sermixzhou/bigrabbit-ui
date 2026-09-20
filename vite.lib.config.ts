@@ -9,6 +9,7 @@ const entries = {
   index: resolve(projectRoot, "src/index.ts"),
   icon: resolve(projectRoot, "src/components/icon.tsx"),
   primitives: resolve(projectRoot, "src/components/primitives/index.ts"),
+  actions: resolve(projectRoot, "src/components/actions/index.ts"),
   forms: resolve(projectRoot, "src/components/forms/index.ts"),
   cards: resolve(projectRoot, "src/components/cards/index.ts"),
   navigation: resolve(projectRoot, "src/components/navigation/index.ts"),
@@ -32,7 +33,7 @@ export default defineConfig({
       fileName: (format, entryName) => `${entryName}.${format === "es" ? "js" : "cjs"}`,
     },
     rollupOptions: {
-      external: (id) => id === "react" || id === "react-dom" || id.startsWith("react/"),
+      external: (id) => id === "react" || id === "react-dom" || id.startsWith("react/") || id.startsWith("@floating-ui/"),
       output: {
         exports: "named",
         assetFileNames: (assetInfo) => assetInfo.names.includes("styles.css")

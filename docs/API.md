@@ -18,6 +18,20 @@ import { WordHeader } from "chatty-bunny/learning";
 
 All native HTML attributes not replaced by a component-specific property are forwarded to the root element.
 
+## Localization
+
+`ChattyBunnyProvider` supplies lightweight component-owned messages without introducing an application i18n framework. The supported locales are `zh-CN` and `en`; `zh-CN` remains the default for backwards compatibility.
+
+```tsx
+import { ChattyBunnyProvider } from "chatty-bunny";
+
+<ChattyBunnyProvider locale="en" messages={{ loading: "Working…" }}>
+  <App />
+</ChattyBunnyProvider>
+```
+
+`messages` is a partial `ChattyBunnyMessages` dictionary. Resolution order is: explicit component property, provider override, selected locale dictionary. Product content such as titles, descriptions, option labels, brand names, and learning copy remains application-owned.
+
 ## Icons
 
 ### `Icon`
@@ -42,7 +56,7 @@ Icons are decorative by default. Put interactive icons inside `IconButton` so th
 | `icon` | `IconName` | — |
 | `block` | `boolean` | `true` |
 
-Extends native button attributes. Loading buttons are disabled and announce “加载中”.
+Extends native button attributes. Loading buttons are disabled and announce the localized `loading` message. Override it per button with `loadingLabel`.
 
 ### `IconButton`
 
@@ -167,9 +181,10 @@ Uses the same controlled properties as `Checkbox`, without `value`, and exposes 
 | `Avatar` | `src`, `alt`, `initials`, `size`, `shape`, `status` |
 | `Accordion` | `items`, `type`, `value`, `defaultValue`, `onValueChange` |
 | `StatCard` | `label`, `value`, `icon`, `trend`, `supportingText`, `progress`, `state` |
-| `ChoiceCard` | `title`, `description`, `media`, `badge`, `trailing`, `selected`, `selectionMode` |
+| `ChoiceCard` | `value`, `title`, `description`, `media`, `badge`, `trailing`, `selected`, `selectionMode` |
+| `ChoiceGroup` | `selectionMode`, `value`, `defaultValue`, `onValueChange`, accessible label |
 
-`Avatar` sizes are `small | medium | large`; status is `online | away | busy | offline`. Accordion supports controlled and uncontrolled single/multiple expansion. `ChoiceCard` extends native button attributes and exposes radio or checkbox semantics based on `selectionMode`.
+`Avatar` sizes are `small | medium | large`; status is `online | away | busy | offline`. Accordion supports controlled and uncontrolled single/multiple expansion. A standalone `ChoiceCard` is a native toggle button (`aria-pressed`). Inside `ChoiceGroup`, single selection exposes one `radiogroup` with roving arrow-key focus and multiple selection exposes one `group` containing checkboxes.
 
 ## Cards
 
@@ -252,6 +267,8 @@ Semantic card state is `default | current | completed | locked | disabled`. Comp
 | `Tooltip` | `content`, `children`, `placement`, `delay`, `disabled` | Pointer leave, blur, Escape |
 
 Dropdown items support icons, disabled/destructive state, and separators. Popover placement and Tooltip placement are `top | bottom | left | right`.
+
+All five floating components—`Select`, `Combobox`, `DropdownMenu`, `Popover`, and `Tooltip`—share one Floating UI foundation. It provides portals, offset, viewport collision shifting/flipping, scroll/resize updates, outside-click and Escape dismissal, focus return, and composed trigger props. A valid trigger element is cloned rather than wrapped, so its original ref, event handlers, ARIA attributes, disabled state, and single focus stop are preserved.
 
 ## Learning
 
@@ -353,3 +370,56 @@ The CSS exposes stable semantic `--cb-*` Design Tokens V2. Override them after i
 The original `--cb-brand`, `--cb-deep`, `--cb-muted`, and `--cb-line` variables remain supported as compatibility aliases. See [Design Tokens V2](./DESIGN_TOKENS.md) for the full token table, Tailwind utility mapping, defaults, and migration audit.
 
 Do not override internal selectors. Prefer component properties, `className`, and the public CSS variables.
+
+## P1 interaction components
+
+### Actions
+
+Import these components from `chatty-bunny/actions` or the package root.
+
+| Component | Important properties | Behavior |
+| --- | --- | --- |
+| `ButtonGroup` | `orientation`, `attached`, native div attributes | Groups any related controls without forcing a button type. |
+| `Toggle` | `pressed`, `onPressedChange`, `icon`, `size`, `variant`, `disabled` | Controlled toggle button with `aria-pressed`; use `value` inside `ToggleGroup`. |
+| `ToggleGroup` | `type`, `value`, `defaultValue`, `onValueChange`, `orientation` | Single or multiple tool-state selection with arrow keys and roving focus. |
+| `Link` | native anchor attributes, `variant`, `externalIndicator`, `disabled`, `icon` | Router-independent anchor styling for inline, standalone, or subtle links. |
+
+`Segment` changes the view of one content region. `ToggleGroup` represents a group of active tools or states. `ButtonGroup` only provides grouping and layout.
+
+### Forms
+
+| Component | Important properties | Notes |
+| --- | --- | --- |
+| `NumberInput` | `value`, `defaultValue`, `min`, `max`, `step`, `onValueChange`, field messages | Allows manual decimal/negative input; clamps to `min`/`max` on blur or step actions and never renders `NaN`. |
+| `OTPInput` | `length`, `value`, `onChange`, `onComplete`, `mode`, `errorMessage`, `name` | Supports numeric/alphanumeric entry, paste, backspace, arrow navigation, auto-advance, and one-time-code autocomplete. |
+| `FormField` | `label`, `description`, `helper`, `errorMessage`, `required`, `controlId` | Clones one control to associate its id and ARIA descriptions; it is not tied to `Input`. |
+
+Use the built-in `label`, `helper`, and `errorMessage` properties when a single `Input`, `Textarea`, `Select`, or other field is sufficient. Use `FormField` for custom/native controls or when one shared field wrapper owns the messages. Do not provide both sets of labels/messages, which would duplicate visible and accessible content.
+
+### Navigation
+
+| Component | Important properties | Behavior |
+| --- | --- | --- |
+| `Breadcrumb` | `items`, `separator`, `maxItems`, `ariaLabel` | Items support `label`, `href`, `onClick`, and `current`; long paths collapse to first, ellipsis, and last. |
+| `Pagination` | `page`, `totalPages`, `onChange`, `siblingCount`, `boundaryCount`, `compact`, labels | Emits page changes only; it never fetches data or changes a URL. |
+| `NavigationMenu` | `items`, `value`, `defaultValue`, `onValueChange`, `ariaLabel` | Uses a collision-aware desktop menu and a stacked native disclosure layout on mobile. |
+
+`NavigationMenu` describes destinations and secondary navigation content. `Navbar` remains the overall page shell.
+
+### Overlays
+
+| Component | Important properties | Notes |
+| --- | --- | --- |
+| `Drawer` | `open`, `onOpenChange`, `side`, `size`, `title`, `description`, `footer`, `overlay` | Portal, focus trap, Escape, outside press, scroll lock, and focus return are provided by the shared overlay foundation. Prefer `BottomSheet` on mobile when the task naturally belongs at the bottom edge. |
+| `AlertDialog` | `open`, `onOpenChange`, `title`, `description`, labels, `loading`, `destructive`, callbacks | Reserved for critical confirmation. Cancel receives initial focus; loading prevents duplicate actions. Outside press is intentionally disabled, while Escape closes the dialog. |
+
+### Data display
+
+| Component | Important properties | Notes |
+| --- | --- | --- |
+| `Table` | `density`, `striped`, `hover`, `wrapperClassName` | Native responsive table wrapper. Compose with `TableCaption`, `TableHeader`, `TableBody`, `TableRow`, `TableHead`, and `TableCell`; `TableBody` accepts `emptyContent`. |
+| `Timeline` | `items` | Vertical, mobile-first list. Each item accepts `title`, `description`, `timestamp`, `icon`, and `state`. |
+| `ActionCard` | `title`, `description`, `icon`/`media`, `badge`, `trailing`, `href`/`onClick`, `disabled`, `selected` | Renders an anchor, button, or noninteractive article according to the supplied action. It is for navigation/action, not selection. |
+| `ProfileCard` | `avatar`/`media`, `name`, `subtitle`, `description`, `metadata`, `status`, `tags`, `actions`, `orientation` | Generic profile presentation for people, pets, teams, creators, or roles; it does not add fake button semantics. |
+
+`Table` is intentionally not a data grid. Sorting, filtering, selection, server pagination, resizing, and virtualization stay in application composition.

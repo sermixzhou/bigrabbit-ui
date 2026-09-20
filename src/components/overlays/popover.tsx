@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { cn } from "../../lib/cn";
+import { useState, type ReactNode } from "react";
+import type { Placement } from "@floating-ui/react";
+import { useChattyBunnyMessages } from "../chatty-bunny-provider";
+import { FloatingFocusManager, OverlayPortal, OverlayTrigger, useOverlayFoundation } from "./overlay-foundation";
 
 export interface PopoverProps {
   trigger: ReactNode;
@@ -10,21 +12,18 @@ export interface PopoverProps {
   placement?: "top" | "bottom" | "left" | "right";
   showCloseButton?: boolean;
   ariaLabel?: string;
+  closeLabel?: string;
   className?: string;
 }
 
-const placementClasses = { top: "bottom-full left-1/2 mb-2 -translate-x-1/2", bottom: "left-1/2 top-full mt-2 -translate-x-1/2", left: "right-full top-1/2 mr-2 -translate-y-1/2", right: "left-full top-1/2 ml-2 -translate-y-1/2" };
-
-export function Popover({ trigger, children, open, defaultOpen = false, onOpenChange, placement = "bottom", showCloseButton = false, ariaLabel = "弹出内容", className }: PopoverProps) {
+export function Popover({ trigger, children, open, defaultOpen = false, onOpenChange, placement = "bottom", showCloseButton = false, ariaLabel, closeLabel, className }: PopoverProps) {
+  const messages = useChattyBunnyMessages();
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const expanded = open ?? internalOpen;
-  const rootRef = useRef<HTMLDivElement>(null);
   const update = (next: boolean) => { if (open === undefined) setInternalOpen(next); onOpenChange?.(next); };
-  useEffect(() => {
-    const dismiss = (event: MouseEvent) => { if (!rootRef.current?.contains(event.target as Node)) update(false); };
-    const escape = (event: KeyboardEvent) => { if (event.key === "Escape") update(false); };
-    document.addEventListener("mousedown", dismiss); document.addEventListener("keydown", escape);
-    return () => { document.removeEventListener("mousedown", dismiss); document.removeEventListener("keydown", escape); };
-  }, [open]);
-  return <div ref={rootRef} className={cn("relative inline-block", className)}><button type="button" aria-haspopup="dialog" aria-expanded={expanded} onClick={() => update(!expanded)} className="cb-focus inline-flex min-h-11 items-center justify-center rounded-cb-sm">{trigger}</button>{expanded && <div role="dialog" aria-label={ariaLabel} className={cn("absolute z-50 w-max max-w-[min(20rem,calc(100vw-2rem))] rounded-cb-sm border border-border bg-surface p-4 text-sm text-text-strong shadow-floating", placementClasses[placement])}>{showCloseButton && <button type="button" aria-label="关闭" onClick={() => update(false)} className="cb-focus absolute right-1 top-1 flex size-9 items-center justify-center rounded-full text-lg text-text-subtle hover:bg-primary-subtle">×</button>}{typeof children === "function" ? children(() => update(false)) : children}</div>}</div>;
+  const overlay = useOverlayFoundation({ open: expanded, onOpenChange: update, placement: placement as Placement, role: "dialog", trigger: "click" });
+  return <>
+    <OverlayTrigger setReference={overlay.refs.setReference} getReferenceProps={overlay.getReferenceProps} props={{ className, "aria-haspopup": "dialog", "aria-expanded": expanded }}>{trigger}</OverlayTrigger>
+    {expanded && <OverlayPortal><FloatingFocusManager context={overlay.context} modal={false} initialFocus={-1} returnFocus><div ref={overlay.refs.setFloating} style={overlay.floatingStyles} {...overlay.getFloatingProps()} aria-label={ariaLabel ?? messages.popover} className="z-50 w-max max-w-[min(20rem,calc(100vw-1rem))] overflow-auto rounded-cb-sm border border-border bg-surface p-4 text-sm text-text-strong shadow-floating">{showCloseButton && <button type="button" aria-label={closeLabel ?? messages.close} onClick={() => update(false)} className="cb-focus absolute right-1 top-1 flex size-9 items-center justify-center rounded-full text-lg text-text-subtle hover:bg-primary-subtle">×</button>}{typeof children === "function" ? children(() => update(false)) : children}</div></FloatingFocusManager></OverlayPortal>}
+  </>;
 }

@@ -2,3 +2,8 @@ export * from "./avatar";
 export * from "./accordion";
 export * from "./stat-card";
 export * from "./choice-card";
+export * from "./choice-group";
+export * from "./table";
+export * from "./timeline";
+export * from "./action-card";
+export * from "./profile-card";

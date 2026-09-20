@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { Accordion, Avatar, ChoiceCard, StatCard } from "./data-display";
+import { Accordion, Avatar, ChoiceCard, ChoiceGroup, StatCard } from "./data-display";
 
 describe("data display", () => {
   it("renders avatar fallbacks and status", () => {
@@ -21,9 +21,19 @@ describe("data display", () => {
     const onClick = vi.fn();
     render(<><StatCard label="本周学习" value="12h" progress={60} /><ChoiceCard title="专注模式" description="减少干扰" selected onClick={onClick} /></>);
     expect(screen.getByText("12h")).toBeInTheDocument();
-    const choice = screen.getByRole("radio", { name: /专注模式/ });
-    expect(choice).toHaveAttribute("aria-checked", "true");
+    const choice = screen.getByRole("button", { name: /专注模式/ });
+    expect(choice).toHaveAttribute("aria-pressed", "true");
     await userEvent.click(choice);
     expect(onClick).toHaveBeenCalledOnce();
+  });
+
+  it("adds grouped choice semantics and arrow-key selection", async () => {
+    const onValueChange = vi.fn();
+    render(<ChoiceGroup aria-label="模式" defaultValue="focus" onValueChange={onValueChange}><ChoiceCard value="focus" title="专注" /><ChoiceCard value="relaxed" title="轻松" /></ChoiceGroup>);
+    const focus = screen.getByRole("radio", { name: "专注" });
+    focus.focus();
+    await userEvent.keyboard("{ArrowRight}");
+    expect(screen.getByRole("radio", { name: "轻松" })).toHaveFocus();
+    expect(onValueChange).toHaveBeenCalledWith("relaxed");
   });
 });

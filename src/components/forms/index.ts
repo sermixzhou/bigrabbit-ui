@@ -12,3 +12,6 @@ export * from "./password-input";
 export * from "./slider";
 export * from "./file-upload";
 export * from "./demo-form";
+export * from "./number-input";
+export * from "./otp-input";
+export * from "./form-field";

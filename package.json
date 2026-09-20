@@ -1,7 +1,7 @@
 {
   "name": "chatty-bunny",
   "version": "0.1.0",
-  "description": "An open-source, responsive React UI kit for learning products, built with Tailwind CSS 4.",
+  "description": "An AI-ready React UI system for modern consumer apps, with responsive foundations and learning-product components.",
   "type": "module",
   "license": "MIT",
   "author": "Chatty Bunny contributors",
@@ -15,10 +15,16 @@
   },
   "keywords": [
     "react",
+    "ai-ready",
+    "component-library",
+    "consumer-app",
+    "consumer-apps",
+    "react-ui",
     "tailwindcss",
     "ui-kit",
     "design-system",
     "education",
+    "learning",
     "components",
     "typescript"
   ],
@@ -31,13 +37,18 @@
     "brand/mascot-states.png",
     "docs/API.md",
     "docs/DESIGN_TOKENS.md",
+    "docs/P0_STABILIZATION_REPORT.md",
+    "docs/P1_GAPS.md",
+    "docs/P1_INTERACTION_COMPLETION_REPORT.md",
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
     "BRAND_LICENSE.md",
     "NOTICE"
   ],
-  "sideEffects": ["**/*.css"],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
@@ -53,6 +64,11 @@
       "types": "./dist/types/components/primitives/index.d.ts",
       "import": "./dist/primitives.js",
       "require": "./dist/primitives.cjs"
+    },
+    "./actions": {
+      "types": "./dist/types/components/actions/index.d.ts",
+      "import": "./dist/actions.js",
+      "require": "./dist/actions.cjs"
     },
     "./forms": {
       "types": "./dist/types/components/forms/index.d.ts",
@@ -108,6 +124,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
     "check": "npm run typecheck && npm run test && npm run build",
     "prepack": "npm run build:package"
   },
@@ -116,6 +134,7 @@
     "react-dom": ">=18.3 <20"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "4.3.3",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.3",
@@ -136,5 +155,8 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.27.20"
   }
 }

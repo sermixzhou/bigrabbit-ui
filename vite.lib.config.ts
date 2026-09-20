@@ -15,6 +15,8 @@ const entries = {
   learning: resolve(projectRoot, "src/components/learning/index.ts"),
   feedback: resolve(projectRoot, "src/components/feedback/index.ts"),
   brand: resolve(projectRoot, "src/components/brand/index.ts"),
+  "data-display": resolve(projectRoot, "src/components/data-display/index.ts"),
+  overlays: resolve(projectRoot, "src/components/overlays/index.ts"),
 };
 
 export default defineConfig({

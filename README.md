@@ -2,7 +2,7 @@
 
 An open-source React component library for learning products, built with TypeScript and Tailwind CSS 4.
 
-[Documentation](https://sermixzhou.github.io/chatty-bunny/) · [Component API](./docs/API.md) · [Changelog](./CHANGELOG.md) · [Contributing](./CONTRIBUTING.md)
+[Documentation](https://sermixzhou.github.io/chatty-bunny/) · [Component API](./docs/API.md) · [Design Tokens](./docs/DESIGN_TOKENS.md) · [Changelog](./CHANGELOG.md) · [Contributing](./CONTRIBUTING.md)
 
 ## Why Chatty Bunny?
 
@@ -63,6 +63,8 @@ Importing from a category entry point keeps the dependency graph focused and mak
 ```tsx
 import { Button, Chip } from "chatty-bunny/primitives";
 import { Input, Switch } from "chatty-bunny/forms";
+import { Avatar, ChoiceCard } from "chatty-bunny/data-display";
+import { Popover, Tooltip } from "chatty-bunny/overlays";
 import { QuizOption, WordHeader } from "chatty-bunny/learning";
 ```
 
@@ -78,6 +80,8 @@ chatty-bunny/navigation
 chatty-bunny/learning
 chatty-bunny/feedback
 chatty-bunny/brand
+chatty-bunny/data-display
+chatty-bunny/overlays
 chatty-bunny/styles.css
 ```
 
@@ -89,16 +93,20 @@ Override the public CSS variables after the library stylesheet:
 @import "chatty-bunny/styles.css";
 
 :root {
-  --cb-brand: #0a7cff;
-  --cb-brand-hover: #006fe8;
-  --cb-brand-pressed: #005fc7;
-  --cb-deep: #0f2749;
+  --cb-primary: #0a7cff;
+  --cb-primary-hover: #006fe8;
+  --cb-primary-pressed: #005fc7;
+  --cb-primary-subtle: #f2f7ff;
+  --cb-primary-border: #cfe4ff;
   --cb-page: #f7fafe;
+  --cb-surface: #ffffff;
   --cb-text: #26344a;
-  --cb-muted: #68758a;
-  --cb-line: #e5eaf2;
+  --cb-text-muted: #68758a;
+  --cb-border: #e5eaf2;
 }
 ```
+
+See the complete [Design Tokens V2 reference](./docs/DESIGN_TOKENS.md), including V1 compatibility aliases and state tokens.
 
 ## Local development
 

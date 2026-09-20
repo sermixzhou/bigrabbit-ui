@@ -145,6 +145,32 @@ Uses the same controlled properties as `Checkbox`, without `value`, and exposes 
 | `disabled` | `boolean` | — |
 | `variant` | `"line" \| "pill"` | Tabs only: `"line"` |
 
+### Core form components
+
+| Component | Important properties | Notes |
+| --- | --- | --- |
+| `Textarea` | native textarea attributes, `label`, `helper`, `errorMessage`, `showCount` | Character count is shown when `showCount` and `maxLength` are set. |
+| `Select` | `options`, `value`, `onChange`, `placeholder`, `leadingIcon`, field messages | Custom single-select listbox with disabled options and arrow-key navigation. |
+| `Combobox` | `options`, `value`, `onChange`, `onQueryChange`, `loading`, `emptyMessage`, `clearable` | Searchable listbox; override `filterOption` for custom/local filtering. |
+| `PasswordInput` | native input attributes except `type`, plus Input field messages | Includes an accessible show/hide control and defaults to `current-password` autocomplete. |
+| `Slider` | native range attributes, `label`, `showValue`, `formatValue` | Uses a touch-sized range control while preserving native range semantics. |
+| `FileUpload` | native file attributes, `files`, `loading`, `errorMessage`, `maxSizeLabel`, `onFilesSelected` | Handles click/drop selection UI only; it never uploads files. |
+
+`SelectOption` is `{ value: string; label: string; disabled?: boolean }` and is shared by `Select` and `Combobox`.
+
+`DemoForm` is a deprecated demo-only state helper. Its root export remains temporarily available for backwards compatibility, but new applications should not use it.
+
+## Data Display
+
+| Component | Important properties |
+| --- | --- |
+| `Avatar` | `src`, `alt`, `initials`, `size`, `shape`, `status` |
+| `Accordion` | `items`, `type`, `value`, `defaultValue`, `onValueChange` |
+| `StatCard` | `label`, `value`, `icon`, `trend`, `supportingText`, `progress`, `state` |
+| `ChoiceCard` | `title`, `description`, `media`, `badge`, `trailing`, `selected`, `selectionMode` |
+
+`Avatar` sizes are `small | medium | large`; status is `online | away | busy | offline`. Accordion supports controlled and uncontrolled single/multiple expansion. `ChoiceCard` extends native button attributes and exposes radio or checkbox semantics based on `selectionMode`.
+
 ## Cards
 
 ### `Card`
@@ -208,6 +234,24 @@ Semantic card state is `default | current | completed | locked | disabled`. Comp
 | `items` | `{ label; value; icon; badge? }[]` | required |
 | `value` | `string` | required |
 | `onChange` | `(value: string) => void` | — |
+
+### `Navbar`
+
+`brand`, `items`, and `action` compose the desktop shell. `open`, `defaultOpen`, and `onOpenChange` control the mobile menu. Each item supports `label`, `href`, `active`, `disabled`, and `onClick`.
+
+### `Sidebar`
+
+`header`, `groups`, and `footer` compose the sidebar. `collapsed` controls the desktop compact state; `mobileOpen` and `onMobileOpenChange` control its mobile drawer adaptation. `onSelect` receives the selected item value.
+
+## Overlays
+
+| Component | Important properties | Dismissal |
+| --- | --- | --- |
+| `DropdownMenu` | `trigger`, `items`, `open`, `onOpenChange`, `align` | Item select, click outside, Escape |
+| `Popover` | `trigger`, `children`, `placement`, `open`, `onOpenChange`, `showCloseButton` | Render-function close, close button, click outside, Escape |
+| `Tooltip` | `content`, `children`, `placement`, `delay`, `disabled` | Pointer leave, blur, Escape |
+
+Dropdown items support icons, disabled/destructive state, and separators. Popover placement and Tooltip placement are `top | bottom | left | right`.
 
 ## Learning
 
@@ -291,17 +335,21 @@ import { MascotProvider } from "chatty-bunny/brand";
 
 ## Styling and customization
 
-The CSS exposes stable `--cb-*` custom properties. Override them after importing the package stylesheet:
+The CSS exposes stable semantic `--cb-*` Design Tokens V2. Override them after importing the package stylesheet:
 
 ```css
 @import "chatty-bunny/styles.css";
 
 :root {
-  --cb-brand: #7c3aed;
-  --cb-brand-hover: #6d28d9;
-  --cb-brand-pressed: #5b21b6;
-  --cb-deep: #24143d;
+  --cb-primary: #7c3aed;
+  --cb-primary-hover: #6d28d9;
+  --cb-primary-pressed: #5b21b6;
+  --cb-primary-subtle: #f5f3ff;
+  --cb-primary-border: #ddd6fe;
+  --cb-focus-ring: rgba(124, 58, 237, 0.2);
 }
 ```
+
+The original `--cb-brand`, `--cb-deep`, `--cb-muted`, and `--cb-line` variables remain supported as compatibility aliases. See [Design Tokens V2](./DESIGN_TOKENS.md) for the full token table, Tailwind utility mapping, defaults, and migration audit.
 
 Do not override internal selectors. Prefer component properties, `className`, and the public CSS variables.

@@ -31,6 +31,7 @@ describe("feedback components", () => {
   it("announces toasts and actionable empty states", () => {
     render(<><Toast message="保存成功" variant="success" /><EmptyState title="暂无内容" description="去添加一些内容吧。" actionLabel="去添加" /></>);
     expect(screen.getByRole("status")).toHaveTextContent("保存成功");
+    expect(screen.getByRole("status")).toHaveClass("border-success-border", "bg-success-soft");
     expect(screen.getByRole("button", { name: "去添加" })).toBeInTheDocument();
   });
 });

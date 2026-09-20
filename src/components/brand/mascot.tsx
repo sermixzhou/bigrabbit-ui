@@ -18,5 +18,5 @@ export interface MascotProps {
 export function Mascot({ state = "welcome", size = "medium", label = "大嘴小兔", decorative = false, className, spriteSrc }: MascotProps) {
   const providedSprite = useContext(MascotSpriteContext);
   const resolvedSprite = spriteSrc ?? providedSprite;
-  return <span role={decorative ? undefined : "img"} aria-hidden={decorative || undefined} aria-label={decorative ? undefined : label} className={cn("inline-block shrink-0 rounded-cb-md bg-[#E6F1FF] bg-[length:400%_300%] bg-no-repeat", size === "small" && "size-12", size === "medium" && "size-20", size === "large" && "size-[120px]", size === "xlarge" && "size-40", className)} style={{ backgroundImage: resolvedSprite ? `url(${resolvedSprite})` : undefined, backgroundPosition: mascotPosition[state] }} />;
+  return <span role={decorative ? undefined : "img"} aria-hidden={decorative || undefined} aria-label={decorative ? undefined : label} className={cn("inline-block shrink-0 rounded-cb-md bg-primary-soft bg-[length:400%_300%] bg-no-repeat", size === "small" && "size-12", size === "medium" && "size-20", size === "large" && "size-[120px]", size === "xlarge" && "size-40", className)} style={{ backgroundImage: resolvedSprite ? `url(${resolvedSprite})` : undefined, backgroundPosition: mascotPosition[state] }} />;
 }

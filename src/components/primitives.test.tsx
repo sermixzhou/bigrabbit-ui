@@ -21,6 +21,7 @@ describe("primitives", () => {
 
     const button = screen.getByRole("button", { name: "加载中" });
     expect(button).toBeDisabled();
+    expect(button).toHaveClass("bg-primary", "text-on-primary", "cb-control");
     await userEvent.click(button);
     expect(onClick).not.toHaveBeenCalled();
   });
@@ -44,6 +45,6 @@ describe("primitives", () => {
   it("labels completed and current steps", () => {
     render(<StepIndicator items={[{ label: "理解" }, { label: "练习" }, { label: "完成" }]} current={1} />);
     expect(screen.getByRole("list", { name: "步骤进度" })).toBeInTheDocument();
-    expect(screen.getByText("练习")).toHaveClass("text-brand-deep");
+    expect(screen.getByText("练习")).toHaveClass("text-text-strong");
   });
 });

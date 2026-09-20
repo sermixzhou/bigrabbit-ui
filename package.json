@@ -29,6 +29,8 @@
   "files": [
     "dist",
     "brand/mascot-states.png",
+    "docs/API.md",
+    "docs/DESIGN_TOKENS.md",
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
@@ -81,6 +83,16 @@
       "types": "./dist/types/components/brand/index.d.ts",
       "import": "./dist/brand.js",
       "require": "./dist/brand.cjs"
+    },
+    "./data-display": {
+      "types": "./dist/types/components/data-display/index.d.ts",
+      "import": "./dist/data-display.js",
+      "require": "./dist/data-display.cjs"
+    },
+    "./overlays": {
+      "types": "./dist/types/components/overlays/index.d.ts",
+      "import": "./dist/overlays.js",
+      "require": "./dist/overlays.cjs"
     },
     "./styles.css": "./dist/styles.css",
     "./mascot.png": "./brand/mascot-states.png",

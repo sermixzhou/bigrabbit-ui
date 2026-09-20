@@ -6,3 +6,5 @@ export * from "./navigation";
 export * from "./learning";
 export * from "./brand";
 export * from "./feedback";
+export * from "./data-display";
+export * from "./overlays";

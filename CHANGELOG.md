@@ -7,6 +7,9 @@ All notable changes to Chatty Bunny are documented in this file. The project fol
 ### Changed
 
 - Renamed the English project identity, npm package, repository, website path, and public CSS prefixes to Chatty Bunny.
+- Added semantic Design Tokens V2, migrated public component colors, and retained V1 token aliases for existing themes.
+- Added the 15 Phase 1 core components across forms, data display, navigation, and overlays, with category exports, demos, API documentation, and accessibility tests.
+- Kept the demo-only `DemoForm` export for compatibility and marked it deprecated.
 
 ### Planned
 

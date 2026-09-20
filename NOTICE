@@ -1,0 +1,15 @@
+Big Rabbit UI
+Copyright (c) 2026 Big Rabbit UI contributors
+
+SOURCE CODE
+React components, TypeScript definitions, tests, documentation source, and
+general-purpose icons are licensed under the MIT License in LICENSE.
+
+BRAND ASSETS
+The names “Big Rabbit”, “大嘴小兔”, the Big Rabbit mascot, logos, mascot sprite
+sheets, and product illustrations are excluded from the MIT grant and are
+licensed separately under BRAND_LICENSE.md.
+
+THIRD-PARTY SOFTWARE
+This project uses React, Tailwind CSS, Vite, Vitest, and other dependencies
+under their respective licenses. See package-lock.json for the dependency list.

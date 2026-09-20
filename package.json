@@ -43,42 +43,42 @@
       "require": "./dist/index.cjs"
     },
     "./icon": {
-      "types": "./dist/types/components/Icon.d.ts",
+      "types": "./dist/types/components/icon.d.ts",
       "import": "./dist/icon.js",
       "require": "./dist/icon.cjs"
     },
     "./primitives": {
-      "types": "./dist/types/components/primitives.d.ts",
+      "types": "./dist/types/components/primitives/index.d.ts",
       "import": "./dist/primitives.js",
       "require": "./dist/primitives.cjs"
     },
     "./forms": {
-      "types": "./dist/types/components/forms.d.ts",
+      "types": "./dist/types/components/forms/index.d.ts",
       "import": "./dist/forms.js",
       "require": "./dist/forms.cjs"
     },
     "./cards": {
-      "types": "./dist/types/components/cards.d.ts",
+      "types": "./dist/types/components/cards/index.d.ts",
       "import": "./dist/cards.js",
       "require": "./dist/cards.cjs"
     },
     "./navigation": {
-      "types": "./dist/types/components/navigation.d.ts",
+      "types": "./dist/types/components/navigation/index.d.ts",
       "import": "./dist/navigation.js",
       "require": "./dist/navigation.cjs"
     },
     "./learning": {
-      "types": "./dist/types/components/learning.d.ts",
+      "types": "./dist/types/components/learning/index.d.ts",
       "import": "./dist/learning.js",
       "require": "./dist/learning.cjs"
     },
     "./feedback": {
-      "types": "./dist/types/components/feedback.d.ts",
+      "types": "./dist/types/components/feedback/index.d.ts",
       "import": "./dist/feedback.js",
       "require": "./dist/feedback.cjs"
     },
     "./brand": {
-      "types": "./dist/types/components/brand.d.ts",
+      "types": "./dist/types/components/brand/index.d.ts",
       "import": "./dist/brand.js",
       "require": "./dist/brand.cjs"
     },

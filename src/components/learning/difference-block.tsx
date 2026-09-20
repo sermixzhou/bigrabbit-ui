@@ -1,0 +1,3 @@
+export function DifferenceBlock({ firstWord, firstDescription, secondWord, secondDescription }: { firstWord: string; firstDescription: string; secondWord: string; secondDescription: string }) {
+  return <div className="grid gap-3 rounded-cb border border-[#CFE4FF] bg-[#F2F7FF] p-4 sm:grid-cols-2"><div className="rounded-cb-sm bg-white p-3"><p className="text-lg font-bold text-brand-deep">{firstWord}</p><p className="mt-1 text-sm text-muted">{firstDescription}</p></div><div className="rounded-cb-sm bg-white p-3"><p className="text-lg font-bold text-brand-deep">{secondWord}</p><p className="mt-1 text-sm text-muted">{secondDescription}</p></div></div>;
+}

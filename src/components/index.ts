@@ -1,4 +1,4 @@
-export * from "./Icon";
+export * from "./icon";
 export * from "./primitives";
 export * from "./forms";
 export * from "./cards";

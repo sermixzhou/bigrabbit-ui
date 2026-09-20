@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { AchievementBadge, BrandLogo, Mascot, MascotCallout, StreakBadge } from "./brand";
+import { AchievementBadge, BrandLogo, Mascot, MascotCallout, MascotProvider, StreakBadge } from "./brand";
 
 describe("brand components", () => {
   it("supports accessible and decorative mascots", () => {
@@ -13,6 +13,11 @@ describe("brand components", () => {
   it("accepts a consumer-provided sprite sheet", () => {
     render(<Mascot label="自定义角色" spriteSrc="/custom-mascot.png" />);
     expect(screen.getByRole("img", { name: "自定义角色" })).toHaveStyle({ backgroundImage: "url(/custom-mascot.png)" });
+  });
+
+  it("shares a consumer-provided sprite through context", () => {
+    render(<MascotProvider spriteSrc="/shared-mascot.png"><Mascot label="共享角色" /></MascotProvider>);
+    expect(screen.getByRole("img", { name: "共享角色" })).toHaveStyle({ backgroundImage: "url(/shared-mascot.png)" });
   });
 
   it("renders compact identity text", () => {

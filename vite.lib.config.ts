@@ -7,14 +7,14 @@ const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 
 const entries = {
   index: resolve(projectRoot, "src/index.ts"),
-  icon: resolve(projectRoot, "src/components/Icon.tsx"),
-  primitives: resolve(projectRoot, "src/components/primitives.tsx"),
-  forms: resolve(projectRoot, "src/components/forms.tsx"),
-  cards: resolve(projectRoot, "src/components/cards.tsx"),
-  navigation: resolve(projectRoot, "src/components/navigation.tsx"),
-  learning: resolve(projectRoot, "src/components/learning.tsx"),
-  feedback: resolve(projectRoot, "src/components/feedback.tsx"),
-  brand: resolve(projectRoot, "src/components/brand.tsx"),
+  icon: resolve(projectRoot, "src/components/icon.tsx"),
+  primitives: resolve(projectRoot, "src/components/primitives/index.ts"),
+  forms: resolve(projectRoot, "src/components/forms/index.ts"),
+  cards: resolve(projectRoot, "src/components/cards/index.ts"),
+  navigation: resolve(projectRoot, "src/components/navigation/index.ts"),
+  learning: resolve(projectRoot, "src/components/learning/index.ts"),
+  feedback: resolve(projectRoot, "src/components/feedback/index.ts"),
+  brand: resolve(projectRoot, "src/components/brand/index.ts"),
 };
 
 export default defineConfig({

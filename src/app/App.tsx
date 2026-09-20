@@ -51,7 +51,7 @@ import {
   WordHeader,
   WordListItem,
 } from "../components";
-import type { IconName } from "../components/Icon";
+import type { IconName } from "../components/icon";
 import { cn } from "../lib/cn";
 
 const categories: Array<{ id: string; number: string; name: string; description: string; icon: IconName }> = [

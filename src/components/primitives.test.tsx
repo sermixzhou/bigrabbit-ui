@@ -1,13 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { Icon } from "./Icon";
-import { Button, Chip, Progress, StepIndicator } from "./primitives";
+import { Icon } from "./icon";
+import { Badge, Button, Chip, Progress, StepIndicator } from "./primitives";
 
 describe("primitives", () => {
   it("renders SVG masks as quoted URLs", () => {
     const { container } = render(<Icon name="check" />);
     expect(container.firstElementChild).toHaveStyle({ maskImage: expect.stringContaining('url("') });
+  });
+
+  it("renders badge content", () => {
+    render(<Badge variant="success">NEW</Badge>);
+    expect(screen.getByText("NEW")).toBeInTheDocument();
   });
 
   it("prevents interaction while a button is loading", async () => {

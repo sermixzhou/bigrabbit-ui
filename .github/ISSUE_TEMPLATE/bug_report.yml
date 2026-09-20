@@ -5,7 +5,7 @@ labels: [bug]
 body:
   - type: markdown
     attributes:
-      value: Thank you for helping improve Big Rabbit UI.
+      value: Thank you for helping improve Chatty Bunny.
   - type: input
     id: version
     attributes:

@@ -1,12 +1,12 @@
-# Big Rabbit Brand Asset License 1.0
+# Chatty Bunny Brand Asset License 1.0
 
-This license applies to the Big Rabbit names, logos, mascot artwork, mascot sprite sheets, product illustrations, and other files identified as brand assets. It does **not** apply to the React component source code, TypeScript definitions, tests, or general-purpose icons, which are licensed under the MIT License.
+This license applies to the Chatty Bunny names, logos, mascot artwork, mascot sprite sheets, product illustrations, and other files identified as brand assets. It does **not** apply to the React component source code, TypeScript definitions, tests, or general-purpose icons, which are licensed under the MIT License.
 
 ## Permitted use
 
 You may:
 
-- display the brand assets when demonstrating, reviewing, or documenting the unmodified Big Rabbit UI project;
+- display the brand assets when demonstrating, reviewing, or documenting the unmodified Chatty Bunny project;
 - include screenshots of the official project in articles, tutorials, and social posts;
 - create private mockups while evaluating the library;
 - make reasonable size and format adjustments needed for the permitted uses above.
@@ -15,10 +15,10 @@ You may:
 
 You must obtain written permission before you:
 
-- use the Big Rabbit name, logo, or mascot as the identity of your own product, company, service, or organization;
+- use the Chatty Bunny name, logo, or mascot as the identity of your own product, company, service, or organization;
 - use the brand assets in a commercial end product, paid template, course, advertisement, or merchandise;
 - distribute modified mascot artwork or derivative brand assets;
-- register a domain, social account, package, application, or trademark containing “Big Rabbit”, “大嘴小兔”, or confusingly similar branding.
+- register a domain, social account, package, application, or trademark containing “Chatty Bunny”, “大嘴小兔”, or confusingly similar branding.
 
 ## Prohibited use
 

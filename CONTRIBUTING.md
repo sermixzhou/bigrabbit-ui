@@ -1,4 +1,4 @@
-# Contributing to Big Rabbit UI
+# Contributing to Chatty Bunny
 
 Thank you for helping make learning-product interfaces easier to build.
 

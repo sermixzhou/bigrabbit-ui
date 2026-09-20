@@ -1,17 +1,17 @@
 {
-  "name": "bigrabbit-ui",
+  "name": "chatty-bunny",
   "version": "0.1.0",
   "description": "An open-source, responsive React UI kit for learning products, built with Tailwind CSS 4.",
   "type": "module",
   "license": "MIT",
-  "author": "Big Rabbit UI contributors",
-  "homepage": "https://sermixzhou.github.io/bigrabbit-ui/",
+  "author": "Chatty Bunny contributors",
+  "homepage": "https://sermixzhou.github.io/chatty-bunny/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sermixzhou/bigrabbit-ui.git"
+    "url": "git+https://github.com/sermixzhou/chatty-bunny.git"
   },
   "bugs": {
-    "url": "https://github.com/sermixzhou/bigrabbit-ui/issues"
+    "url": "https://github.com/sermixzhou/chatty-bunny/issues"
   },
   "keywords": [
     "react",

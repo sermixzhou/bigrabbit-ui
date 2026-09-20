@@ -2,7 +2,7 @@
 
 ## Our pledge
 
-We pledge to make participation in the Big Rabbit UI community welcoming and harassment-free for everyone, regardless of background, identity, experience level, or personal characteristics.
+We pledge to make participation in the Chatty Bunny community welcoming and harassment-free for everyone, regardless of background, identity, experience level, or personal characteristics.
 
 ## Expected behavior
 

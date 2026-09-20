@@ -34,7 +34,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "br-control inline-flex items-center justify-center gap-2 rounded-br-md border px-5 text-[17px] font-semibold active:scale-[.98]",
+        "cb-control inline-flex items-center justify-center gap-2 rounded-cb-md border px-5 text-[17px] font-semibold active:scale-[.98]",
         size === "large" ? "h-12" : "h-11",
         variant === "primary" && "border-transparent bg-brand text-white hover:bg-brand-hover active:bg-brand-pressed",
         variant === "secondary" && "border-[#CFE4FF] bg-[#F2F7FF] text-brand hover:bg-[#E6F1FF]",
@@ -65,7 +65,7 @@ export function IconButton({ icon, label, variant = "plain", selected, iconSize 
       aria-label={label}
       aria-pressed={selected}
       className={cn(
-        "br-control inline-flex size-11 shrink-0 items-center justify-center rounded-full border active:scale-[.96]",
+        "cb-control inline-flex size-11 shrink-0 items-center justify-center rounded-full border active:scale-[.96]",
         variant === "plain" && "border-transparent bg-transparent hover:bg-[#F2F7FF]",
         variant === "soft" && "border-transparent bg-[#F2F7FF] text-brand hover:bg-[#E6F1FF]",
         variant === "outlined" && "border-line bg-white hover:border-[#CFE4FF] hover:bg-[#F2F7FF]",
@@ -91,7 +91,7 @@ export function Chip({ selected, variant = "neutral", icon, onSelectedChange, cl
     <button
       aria-pressed={selected}
       className={cn(
-        "br-control inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-sm font-medium",
+        "cb-control inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-sm font-medium",
         semanticStyles[variant],
         selected && "!border-brand !bg-brand !text-white",
         className,

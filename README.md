@@ -1,10 +1,10 @@
-# Big Rabbit UI / 大嘴小兔 UI
+# Chatty Bunny / 大嘴小兔 UI
 
 An open-source React component library for learning products, built with TypeScript and Tailwind CSS 4.
 
-[Documentation](https://sermixzhou.github.io/bigrabbit-ui/) · [Component API](./docs/API.md) · [Changelog](./CHANGELOG.md) · [Contributing](./CONTRIBUTING.md)
+[Documentation](https://sermixzhou.github.io/chatty-bunny/) · [Component API](./docs/API.md) · [Changelog](./CHANGELOG.md) · [Contributing](./CONTRIBUTING.md)
 
-## Why Big Rabbit UI?
+## Why Chatty Bunny?
 
 - Learning-focused components such as word headers, quiz options, pronunciation controls, study progress, and answer feedback.
 - Responsive behavior for mobile, tablet, and desktop layouts.
@@ -16,20 +16,20 @@ An open-source React component library for learning products, built with TypeScr
 ## Install
 
 ```bash
-npm install bigrabbit-ui
+npm install chatty-bunny
 ```
 
 Import the stylesheet once:
 
 ```tsx
-import "bigrabbit-ui/styles.css";
+import "chatty-bunny/styles.css";
 ```
 
 The default mascot artwork is separately licensed and opt-in. Import it only for permitted demonstration use, or pass your own sprite:
 
 ```tsx
-import mascotSprite from "bigrabbit-ui/mascot.png";
-import { MascotProvider } from "bigrabbit-ui/brand";
+import mascotSprite from "chatty-bunny/mascot.png";
+import { MascotProvider } from "chatty-bunny/brand";
 
 <MascotProvider spriteSrc={mascotSprite}>
   <App />
@@ -39,7 +39,7 @@ import { MascotProvider } from "bigrabbit-ui/brand";
 Then use the components:
 
 ```tsx
-import { Button, Progress, WordHeader } from "bigrabbit-ui";
+import { Button, Progress, WordHeader } from "chatty-bunny";
 
 export function Lesson() {
   return (
@@ -61,24 +61,24 @@ export function Lesson() {
 Importing from a category entry point keeps the dependency graph focused and makes tree-shaking explicit:
 
 ```tsx
-import { Button, Chip } from "bigrabbit-ui/primitives";
-import { Input, Switch } from "bigrabbit-ui/forms";
-import { QuizOption, WordHeader } from "bigrabbit-ui/learning";
+import { Button, Chip } from "chatty-bunny/primitives";
+import { Input, Switch } from "chatty-bunny/forms";
+import { QuizOption, WordHeader } from "chatty-bunny/learning";
 ```
 
 Available entries:
 
 ```text
-bigrabbit-ui
-bigrabbit-ui/icon
-bigrabbit-ui/primitives
-bigrabbit-ui/forms
-bigrabbit-ui/cards
-bigrabbit-ui/navigation
-bigrabbit-ui/learning
-bigrabbit-ui/feedback
-bigrabbit-ui/brand
-bigrabbit-ui/styles.css
+chatty-bunny
+chatty-bunny/icon
+chatty-bunny/primitives
+chatty-bunny/forms
+chatty-bunny/cards
+chatty-bunny/navigation
+chatty-bunny/learning
+chatty-bunny/feedback
+chatty-bunny/brand
+chatty-bunny/styles.css
 ```
 
 ## Customize the theme
@@ -86,17 +86,17 @@ bigrabbit-ui/styles.css
 Override the public CSS variables after the library stylesheet:
 
 ```css
-@import "bigrabbit-ui/styles.css";
+@import "chatty-bunny/styles.css";
 
 :root {
-  --br-brand: #0a7cff;
-  --br-brand-hover: #006fe8;
-  --br-brand-pressed: #005fc7;
-  --br-deep: #0f2749;
-  --br-page: #f7fafe;
-  --br-text: #26344a;
-  --br-muted: #68758a;
-  --br-line: #e5eaf2;
+  --cb-brand: #0a7cff;
+  --cb-brand-hover: #006fe8;
+  --cb-brand-pressed: #005fc7;
+  --cb-deep: #0f2749;
+  --cb-page: #f7fafe;
+  --cb-text: #26344a;
+  --cb-muted: #68758a;
+  --cb-line: #e5eaf2;
 }
 ```
 
@@ -147,7 +147,7 @@ The library build produces ESM, CommonJS, CSS, assets, and declaration maps. Rea
 
 ## Brand assets
 
-The component source and general-purpose icons are MIT licensed. The Big Rabbit name, logo, mascot, sprite sheet, and illustrations use a separate brand license. Use the `spriteSrc` property on `Mascot` to supply artwork you own for production projects.
+The component source and general-purpose icons are MIT licensed. The Chatty Bunny name, logo, mascot, sprite sheet, and illustrations use a separate brand license. Use the `spriteSrc` property on `Mascot` to supply artwork you own for production projects.
 
 Read [BRAND_LICENSE.md](./BRAND_LICENSE.md) and [NOTICE](./NOTICE) before using brand assets.
 
@@ -160,4 +160,4 @@ Read [BRAND_LICENSE.md](./BRAND_LICENSE.md) and [NOTICE](./NOTICE) before using 
 ## License
 
 - Source code: [MIT](./LICENSE)
-- Brand assets: [Big Rabbit Brand Asset License](./BRAND_LICENSE.md)
+- Brand assets: [Chatty Bunny Brand Asset License](./BRAND_LICENSE.md)

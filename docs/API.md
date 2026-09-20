@@ -1,19 +1,19 @@
 # Component API
 
-Big Rabbit UI components are controlled React components. They emit events and never perform routing, data fetching, authorization, recording, audio playback, or learning business logic on their own.
+Chatty Bunny components are controlled React components. They emit events and never perform routing, data fetching, authorization, recording, audio playback, or learning business logic on their own.
 
 Import the stylesheet once near your application entry:
 
 ```tsx
-import "bigrabbit-ui/styles.css";
+import "chatty-bunny/styles.css";
 ```
 
 Import from the root for convenience or from a category entry for the smallest dependency graph:
 
 ```tsx
-import { Button } from "bigrabbit-ui";
-import { Input, Switch } from "bigrabbit-ui/forms";
-import { WordHeader } from "bigrabbit-ui/learning";
+import { Button } from "chatty-bunny";
+import { Input, Switch } from "chatty-bunny/forms";
+import { WordHeader } from "chatty-bunny/learning";
 ```
 
 All native HTML attributes not replaced by a component-specific property are forwarded to the root element.
@@ -272,8 +272,8 @@ Mascot state is `welcome | learning | thinking | success | error | encourage | e
 Use `MascotProvider` to supply one sprite sheet to every nested brand component:
 
 ```tsx
-import mascotSprite from "bigrabbit-ui/mascot.png";
-import { MascotProvider } from "bigrabbit-ui/brand";
+import mascotSprite from "chatty-bunny/mascot.png";
+import { MascotProvider } from "chatty-bunny/brand";
 
 <MascotProvider spriteSrc={mascotSprite}>
   <App />
@@ -291,16 +291,16 @@ import { MascotProvider } from "bigrabbit-ui/brand";
 
 ## Styling and customization
 
-The CSS exposes stable `--br-*` custom properties. Override them after importing the package stylesheet:
+The CSS exposes stable `--cb-*` custom properties. Override them after importing the package stylesheet:
 
 ```css
-@import "bigrabbit-ui/styles.css";
+@import "chatty-bunny/styles.css";
 
 :root {
-  --br-brand: #7c3aed;
-  --br-brand-hover: #6d28d9;
-  --br-brand-pressed: #5b21b6;
-  --br-deep: #24143d;
+  --cb-brand: #7c3aed;
+  --cb-brand-hover: #6d28d9;
+  --cb-brand-pressed: #5b21b6;
+  --cb-deep: #24143d;
 }
 ```
 

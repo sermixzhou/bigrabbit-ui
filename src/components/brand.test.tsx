@@ -17,7 +17,7 @@ describe("brand components", () => {
 
   it("renders compact identity text", () => {
     render(<BrandLogo variant="compact" />);
-    expect(screen.getByText("大嘴小兔")).toBeInTheDocument();
+    expect(screen.getByText("Chatty Bunny")).toBeInTheDocument();
   });
 
   it("renders callouts and reward states", () => {
